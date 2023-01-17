@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+    <head>
+        <title>URL编码</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <script>
+            document.write("<h1>" + encodeURIComponent(window.location.search.match(/(?<=?)[\s\S]+/)) + "</h1>");
+        </script>
+    </body>
+</html>

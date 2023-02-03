@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>文件选择器</title>
+        <script type="text/javascript">
+            // 选择文件后的回调函数
+            function callback(file) {
+                // 调用encode方法，base64编码该文件
+                const base64 = encode(file);
+
+                // 复制base64编码字符串到剪贴板
+                copyStr(base64);
+
+                // 提示结果已复制
+                showResult();
+
+                // 2秒后刷新页面
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            }
+
+            // 显示提示信息
+            function showResult() {
+                const resultNode = document.createElement('div');
+                resultNode.innerHTML = '结果已复制✅';
+                document.body.appendChild(resultNode);
+            }
+
+            // 将文本复制到剪贴板的方法
+            function copyStr(str) {
+                const inputElement = document.createElement('input');
+                inputElement.value = str;
+                document.body.appendChild(inputElement);
+                inputElement.select();
+                document.execCommand('copy');
+                document.body.removeChild(inputElement);
+            }
+
+            // base64编码该文件
+            function encode(file) {
+                // TODO:
+            }
+        </script>
+    </head>
+    <body>
+        <input type="file" onchange="callback(this.files[0])" />
+    </body>
+</html>
